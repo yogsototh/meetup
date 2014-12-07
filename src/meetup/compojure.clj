@@ -25,9 +25,6 @@
          :body "the requested recipe does not exists"})))
 
 (defn cancel-pizza-handler [params]
-
-  @orders
-
   (let [id (:id (keywordize-keys params))]
     (if-not (nil? (get @orders (keyword id)))
         (do (swap! orders dissoc (keyword id))
